@@ -13,31 +13,31 @@ import { doFetchData } from "./modules.mjs";
 function createCart() {
   const cart = localStorage.getItem("cart");
   if (!cart) {
-    // is it parsed from axios?
     localStorage.setItem("cart", JSON.stringify([]));
+    // console.log("if there isnt a cart add one");
   }
-  console.log("yabadabadu2");
+  // console.log("yabadabadu2");
 }
-
+//  adding to cart
 function addToCart(raincoat) {
-  console.log("addToCart", raincoat);
+  console.log("addedToCart", raincoat);
   const cart = JSON.parse(localStorage.getItem("cart"));
-
-  const isProdInCart = cart.findIndex(function (identicalProd) {
+  console.log(cart);
+  const prodIndex = cart.findIndex(function (currentProd) {
+    console.log("currentProd");
     if (raincoat.id === raincoat.id) {
       return true;
     } else {
       return false;
     }
   });
-  if (isProdInCart === -1) {
+  if (prodIndex === -1) {
     cart.push({ ...raincoat, quantity: 1 });
   } else {
-    // why isnt it working here ? why isnt it adding ?
-    cart[isProdInCart].quantity++;
+    cart[prodIndex].quantity++;
   }
-  console.log("isProductInCart", isProdInCart, cart);
-  console.log(cart);
+  console.log("prodIndex", prodIndex);
+  cart.push(raincoat);
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
