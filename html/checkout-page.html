@@ -13,6 +13,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../stylesheets/index.css">
     <script src="https://kit.fontawesome.com/aea85badd7.js" crossorigin="anonymous"></script>
+    <script type="module" src="../scripts/modules.mjs"></script>
+    <script type="module" src="../scripts/cart-p.mjs"></script>
 </head>
 
 <body>
@@ -116,42 +118,47 @@
             </form>
         </div>
 
-        </div>
-        <section class="order-review">
+     <section class="order-review">
+        <div  id="cartCont">
             <h2>Order review</h2>
             <hr>
-            <div class="check-outbox">
-                <img src="../imgs/Product-imgs/the-explorer.png" alt="The explorer jacket">
+            <div class="check-outbox" id="singleCartCheckoutProd">
+                <img src="" alt="" id="checkOutProdImg">
+                <!-- <div id="checkOutProdImg"><img src="../imgs/Product-imgs/the-explorer.png" alt="The explorer jacket"></div> -->
                 <div class="check-outbox2">
-                    <p class="product-ttl">The explorer</p>
-                    <p class="product-price">kr 2500</p>
-                    <form action="signUp-promo.php" method="post">
+                    <p id="prodQuant"></p>
+                    <p class="product-ttl" id="prodTtl"></p>
+                    <p class="product-price" id="prodPrice"></p>
+                    <!-- <form action="signUp-promo.php" method="post">
                         <label for="sign-up-promo">Sign up for 20% discount on first order</label>
                         <a href=""><input type="submit" value="Sign up" id="sign-up-promo"
                                 class="primary-button small-b">
                         </a>
-                    </form>
+                    </form> -->
                 </div>
             </div>
+        
             <hr>
             <form action="apply-promoCode.php" class="apply-promoCode">
                 <input type="text" class="textInput-contact half" placeholder="Add code">
                 <input type="submit" value="Apply promo code" class="primary-button b-promo">
             </form>
             <hr>
+            <div id="cartCalculations">
             <div class="sub">
-                <h6 class="inline-h6">Subtotal</h6>
-                <h6 class="inline-h6">Kr 2500</h6>
+                <h6 class="inline-h6" >Subtotal</h6>
+                <h6 class="inline-h6" class="total-Pay">Kr 2500</h6>
                 <h6 class="inline-h6">Shipping</h6>
                 <h6 class="inline-h6">Free</h6>
             </div>
             <hr>
             <div class="total">
-                <h6 class="inline-h6">Total</h6>
-                <h6 class="inline-h6">Kr 2500</h6>
+                <h6 class="inline-h6" >Total</h6>
+                <h6 class="inline-h6" class="total-Pay">Kr 2500</h6>
                 <p>Including 25% vat</p>
             </div>
-        </section>
+        </div>
+    </section>
     </main>
     <footer>
 

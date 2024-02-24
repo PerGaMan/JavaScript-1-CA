@@ -6,60 +6,41 @@ import { baseApiUrl } from "./modules.mjs";
 import { rainyProdEndPoints } from "./modules.mjs";
 // Imported functions
 import { doFetchData } from "./modules.mjs";
+
 //      ------- Working on -------
+
 // creating cart component
 function createCart() {
   const cart = localStorage.getItem("cart");
-  console.log("yabadabadu1");
   if (!cart) {
+    // is it parsed from axios?
     localStorage.setItem("cart", JSON.stringify([]));
   }
   console.log("yabadabadu2");
 }
 
-const addToCart = function (product) {
-  console.log("add to cart", product);
-};
-//      ------- Working on -------
-//  generate html from the rainydays array
-{
-  /* <div class="content-container">
-            <div class="two-column">
-                <div class="column-left">
-                    <a href="../html.files/a-jacket-spesific.html">
-                        <div class="card">
-                            <div class="card-image"><img src="../imgs/Product-imgs/the-explorer.png"
-                                    alt="the motorist jacket">
-                            </div>
-                            <div class="card-text-field">
-                                <p class="product-ttl"> The explorer</p>
-                                <p class="product-txt"> With fully sealed seams, it’s durably waterproof,
-                                    completel windproof, and highly breathable.
-                                </p>
-                                <p class="product-price">2500 Kr</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+function addToCart(raincoat) {
+  console.log("addToCart", raincoat);
+  const cart = JSON.parse(localStorage.getItem("cart"));
 
-                <div class="column-right">
-                    <a href="html.files/a-jacket-spesific.html">
-                        <div class="card">
-                            <div class="card-image"><img src="../imgs/Product-imgs/hd-hiker.png " alt="Xd Hiker jacket">
-                            </div>
-                            <div class="card-text-field">
-                                <p class="product-ttl">Xd Hiker</p>
-                                <p class="product-txt">This bound to be your new go-to hiking shell. Fully
-                                    waterproof,
-                                    breathable, and designed withstretch.</p>
-                                <p class="product-price">2500 Kr</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div> */
+  const isProdInCart = cart.findIndex(function (identicalProd) {
+    if (raincoat.id === raincoat.id) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  if (isProdInCart === -1) {
+    cart.push({ ...raincoat, quantity: 1 });
+  } else {
+    // why isnt it working here ? why isnt it adding ?
+    cart[isProdInCart].quantity++;
+  }
+  console.log("isProductInCart", isProdInCart, cart);
+  console.log(cart);
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
+
 function genProdHtml(raincoat) {
   // console.log(raincoat);
   //    ------- variables -------
@@ -82,9 +63,11 @@ function genProdHtml(raincoat) {
   // const isProductOnSale = "";
   //                  insert image how?
   const productImg = document.createElement("img");
-  // productImg.img.src = raincoat.image;
-  // delete the Rainy days from the title
+  // how to get the image????
+  // productImg.src = raincoat.image;
+  // productImg.src = raincoat.image.url;
   //       ------- declaration from api -------
+  // delete the Rainy days from the title
   productTtl.textContent = raincoat.title;
   productDescription.textContent = raincoat.description;
   // Change the int of price to num
@@ -126,10 +109,10 @@ function displayRainCoatsLi(rainCoats) {
 // }
 
 async function main() {
+  createCart();
   try {
     const { data: rainCoats } = await doFetchData(rainyProdEndPoints);
-    // const rainCoats = data;
-    // or save to localstorage
+    // const rainCoats = { data: rainCoats }.data;
     displayRainCoatsLi(rainCoats);
   } catch (error) {
     console.error();
