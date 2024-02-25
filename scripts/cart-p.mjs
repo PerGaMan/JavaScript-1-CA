@@ -54,9 +54,24 @@ function genHtmlCartProd(raincoat) {
     cartCalculations
   );
   return singleProdCheckoutDiv;
-  //    ------- delete from cart -------
 }
 //
+//    ------- delete from cart -------
+function removeFromCart() {
+  const productId = raincoat.id;
+  const filteredProd = cart.filter((currentProd) => {
+    currentProd.id !== productId;
+  });
+  cart = filteredProd;
+}
+// add an delete button
+
+//    ------- empty cart -------
+function emptyCart() {
+  cart = [];
+}
+// add an empty cart button
+
 function displayCartProd() {
   const cartCont = document.querySelector("#cartCont");
   const cart = JSON.parse(localStorage.getItem("cart"));
