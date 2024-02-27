@@ -7,7 +7,22 @@
 // 5. Append the HTML yo the display container
 //
 //
-console.log("hei there im connected");
+const cart = JSON.parse(localStorage.getItem("cart"));
+
+console.log("hei there im connected", cart);
+
+function displayCartProd(c) {
+  const cartCont = document.querySelector("#cartCont");
+
+  // cart.forEach((currentProd) => {
+  //   const singleProdCard = genHtmlCartProd(currentProd);
+  // });
+  // is it cart not an array ??
+  c.forEach(function (currentProd) {
+    const singleProdCard = genHtmlCartProd(currentProd);
+    cartCont.append(singleProdCard);
+  });
+}
 
 /* STEP BY STEP APPROACH:
 So if I followed your logic, I would start like this:
@@ -97,20 +112,6 @@ genHtmlCartProd(exampleProd);
 //   cart = [];
 // }
 // // add an empty cart button
-
-// function displayCartProd() {
-//   const cartCont = document.querySelector("#cartCont");
-//   const cart = JSON.parse(localStorage.getItem("cart"));
-
-//   // cart.forEach((currentProd) => {
-//   //   const singleProdCard = genHtmlCartProd(currentProd);
-//   // });
-//   // is it cart not an array ??
-//   cart.forEach(function (currentProd) {
-//     const singleProdCard = genHtmlCartProd(currentProd);
-//     cartCont.append(singleProdCard);
-//   });
-// }
 
 // function checkoutCart() {
 //   displayCartProd();

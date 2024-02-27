@@ -209,7 +209,7 @@ fieldset {
   /* padding: 0 5; */
 }
 /* ------------------------------------ ** product cards ** ----------------- */
-/* .content-container {
+.content-container {
     width: 100%;
     max-width: var(--body-width);
     display: flex;
@@ -220,7 +220,7 @@ fieldset {
     text-decoration: none;
     justify-content: space-between;
 }
- */
+
 
 .card {
   /* max-width: 35%; */
